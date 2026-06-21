@@ -1,40 +1,34 @@
 import { useNavigate } from "react-router-dom";
-import {
-  User,
-  Eye,
-  Edit,
-} from "lucide-react";
+import { FilePlus, List, Search } from "lucide-react";
 
-const Dashboard = () => {
+const PolicyDashboard = () => {
   const navigate = useNavigate();
 
   const cards = [
     {
-      title: "Create Profile",
-      icon: User,
-      path: "/customer/profile/create",
+      title: "Purchase Policy",
+      icon: FilePlus,
+      path: "/customer/policies/purchase",
     },
     {
-      title: "View Profile",
-      icon: Eye,
-      path: "/customer/profile/view",
+      title: "My Policies",
+      icon: List,
+      path: "/customer/policies/my",
     },
     {
-      title: "Update Profile",
-      icon: Edit,
-      path: "/customer/profile/update",
+      title: "Get Policy By Id",
+      icon: Search,
+      path: "/customer/policies/by-id",
     },
   ];
 
   return (
     <div className="p-6">
-
       <h1 className="text-3xl font-bold mb-6">
-        Customer Dashboard
+        Policy Module
       </h1>
 
       <div className="grid md:grid-cols-3 gap-6">
-
         {cards.map((card) => {
           const Icon = card.icon;
 
@@ -42,7 +36,7 @@ const Dashboard = () => {
             <div
               key={card.title}
               onClick={() => navigate(card.path)}
-              className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-xl transition"
+              className="bg-white rounded-xl shadow-md p-6 cursor-pointer hover:shadow-xl"
             >
               <Icon size={40} />
 
@@ -57,4 +51,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default PolicyDashboard;
