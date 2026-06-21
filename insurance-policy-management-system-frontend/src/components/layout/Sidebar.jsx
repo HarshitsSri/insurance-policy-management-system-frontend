@@ -9,7 +9,7 @@ import {
   LogOut
 } from "lucide-react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
 
@@ -81,6 +81,17 @@ export default function Sidebar() {
       ? agentMenu
       : customerMenu;
 
+const navigate = useNavigate();
+
+const handleLogout = () => {
+
+  localStorage.clear();
+
+  navigate("/login", {
+    replace: true
+  });
+};
+
   return (
     <div className="w-72 bg-slate-900 text-white flex flex-col">
 
@@ -114,6 +125,7 @@ export default function Sidebar() {
 
       <button
         className="m-4 flex items-center gap-3 bg-red-600 px-4 py-3 rounded-lg"
+        onClick={handleLogout}
       >
         <LogOut size={18} />
         Logout
